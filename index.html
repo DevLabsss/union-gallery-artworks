@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Union Gallery</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-left">
+        <a href="https://x.com/union_build" target="_blank" class="logo-link">
+          <img class="union-logo" src="Logo/union.png" alt="Union Logo" />
+        </a>
+        <h1 class="union-text">UNION</h1>
+      </div>
+
+      <div class="header-right">
+        <a href="https://x.com/devlabsss" target="_blank" class="credit-link">
+          by DevLabs
+        </a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- Request Card -->
+      <div class="request-card">
+        <h2>Have a wild idea or a crazy request? 🚀</h2>
+        <p>
+          We’re always down to build cool stuff with you. Shoot me a DM and
+          let's make it happen!
+        </p>
+        <a
+          class="request-link"
+          href="https://twitter.com/messages/compose?recipient_id=1234567890"
+          target="_blank"
+          >→ Drop a DM
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="#1DA1F2"
+            style="vertical-align: middle; margin-left: 5px"
+          >
+            <path
+              d="M22.46 6c-.77.35-1.5.58-2.24.69a3.91 3.91 0 0 0 1.7-2.15c-.77.46-1.62.79-2.52.97A3.89 3.89 0 0 0 16.12 4c-2.18 0-3.95 1.77-3.95 3.95 0 .31.04.61.1.9-3.28-.16-6.19-1.74-8.13-4.14a3.95 3.95 0 0 0-.53 1.99c0 1.37.7 2.57 1.76 3.27-.65-.02-1.26-.2-1.8-.5v.05c0 1.91 1.36 3.5 3.17 3.86-.33.09-.68.13-1.04.13-.25 0-.5-.02-.74-.07.5 1.56 1.96 2.7 3.69 2.74A7.85 7.85 0 0 1 2 19.55 11.07 11.07 0 0 0 7.29 21c6.88 0 10.64-5.7 10.64-10.64 0-.16 0-.32-.01-.48A7.55 7.55 0 0 0 22.46 6z"
+            />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Gallery Container -->
+      <div class="gallery-grid" id="artworks-containers">
+        <!-- Cards akan auto-generated oleh JS disini -->
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Union Build | Powered by DevLabs</p>
+    </footer>
+
+    <script>
+      const imageCount = 56;
+      const galleryDiv = document.getElementById("artworks-containers");
+
+      for (let i = 1; i <= imageCount; i++) {
+        const card = document.createElement("div");
+        card.classList.add("artwork-card");
+
+        const img = document.createElement("img");
+        img.src = `images/art${i}.png`;
+        img.alt = `Union Artwork #${i}`;
+
+        const title = document.createElement("h3");
+        title.innerText = `Union Artwork #${i}`;
+
+        const buttonRow = document.createElement("div");
+        buttonRow.classList.add("button-row");
+
+        const downloadBtn = document.createElement("a");
+        downloadBtn.href = img.src;
+        downloadBtn.download = "";
+        downloadBtn.innerText = "Download";
+        downloadBtn.classList.add("download-btn");
+
+        const likeBtn = document.createElement("button");
+        likeBtn.classList.add("like-btn");
+        likeBtn.setAttribute("data-id", `art${i}`);
+        likeBtn.innerHTML = "❤️ 0";
+
+        buttonRow.appendChild(downloadBtn);
+        buttonRow.appendChild(likeBtn);
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(buttonRow);
+
+        galleryDiv.appendChild(card);
+      }
+
+      // Load Likes from LocalStorage & Add Click Event
+      document.addEventListener("DOMContentLoaded", function () {
+        const likeButtons = document.querySelectorAll(".like-btn");
+
+        likeButtons.forEach((btn) => {
+          const artId = btn.dataset.id;
+          const savedLikes = localStorage.getItem(`likes_${artId}`);
+
+          if (savedLikes) {
+            btn.innerHTML = `❤️ ${savedLikes}`;
+          }
+
+          btn.addEventListener("click", function () {
+            let count =
+              parseInt(localStorage.getItem(`likes_${artId}`) || "0") + 1;
+            localStorage.setItem(`likes_${artId}`, count);
+            btn.innerHTML = `❤️ ${count}`;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

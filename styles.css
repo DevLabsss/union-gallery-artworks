@@ -1,0 +1,219 @@
+:root {
+  --primary: #000000;
+  --secondary: #abecfd;
+  --text-light: #ffffff;
+  --text-muted: #888888;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--text-light);
+  font-family: "JetBrains Mono", monospace;
+  padding: 0 1rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--secondary);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.union-logo {
+  height: 48px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.credit-link {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-style: italic;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.credit-link:hover {
+  opacity: 1;
+}
+
+/* Main Content */
+.main-content {
+  margin: 2rem auto;
+  max-width: 1600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Request Card */
+.request-card {
+  border: 2px solid var(--secondary);
+  background: linear-gradient(135deg, #1a1a1a 0%, #222222 100%);
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-light);
+  box-shadow: 0 0 10px rgba(171, 236, 253, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.request-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(171, 236, 253, 0.2);
+}
+
+.request-card h2 {
+  font-size: 1.4rem;
+  color: var(--secondary);
+  margin-bottom: 0.8rem;
+}
+
+.request-card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.request-link {
+  display: inline-block;
+  color: var(--secondary);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid var(--secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.request-link:hover {
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.artwork-card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.artwork-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(171, 236, 253, 0.2);
+}
+
+.artwork-card img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.artwork-card:hover img {
+  transform: scale(1.05);
+}
+
+.artwork-card h3 {
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+/* Button Row */
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.download-btn {
+  background: var(--secondary);
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: var(--primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.download-btn:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.like-btn {
+  min-width: 60px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  background-color: transparent;
+  border: none;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.like-btn:hover {
+  transform: scale(1.2);
+  color: #ff6b6b;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 3rem 0 2rem 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .credit-link {
+    align-self: flex-end;
+  }
+
+  .union-logo {
+    height: 40px;
+  }
+}
